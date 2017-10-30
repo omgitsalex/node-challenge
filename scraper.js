@@ -6,7 +6,9 @@ const url = "https://www.npmjs.com/browse/depended";
 
 module.exports = scraper
 
-function scraper (count, callback) {
+function scraper (count = 10, callback) {
+	let numberOfRequests = Math.ceil(count / 36);
+	
 	request(url, function(error, response, body) {
 		if (!error) {
 			let $ = cheerio.load(body);
@@ -18,9 +20,9 @@ function scraper (count, callback) {
 				packages.push(obj);
 			})
 
-			console.log(packages);
-		}
+			return callback(packages.slice(0, count));
+		} 
 	})
 }
 
-scraper(10);
+scraper(10, function(data) { console.log(data) });
