@@ -28,5 +28,5 @@ function downloader(packageArray, callback) {
 		});
 	});
 
-	return;
+	return callback();
 }
