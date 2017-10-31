@@ -22,6 +22,7 @@ test('download', function (t) {
     fs.readdir('./packages', function (err, files) {
       if (err) return callback(err)
       // Filter .gitignore and other hidden files
+
       files = files.filter((file) => !/^\./.test(file))
       t.equal(files.length, COUNT, `has ${COUNT} files`)
       callback()
@@ -37,7 +38,7 @@ test('download', function (t) {
   }
 
   function verifyLodash (callback) {
-    const _ = require('./packages/lodash')
+    const _ = require('./packages/lodash/package')
     t.equal(typeof _.map, 'function', '_.map exists')
     callback()
   }

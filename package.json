@@ -1,8 +1,12 @@
 {
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js | colortape"
   },
-  "dependencies": {},
+  "dependencies": {
+    "async": "^2.5.0",
+    "colortape": "^0.1.2",
+    "tarball-extract": "0.0.6"
+  },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "get-folder-size": "~1.0.0",
