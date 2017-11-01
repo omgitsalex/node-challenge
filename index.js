@@ -1,8 +1,8 @@
 'use strict'
 
 module.exports = download
-const downloader = require('./downloader.js');
-const scraper = require('./scraper.js');
+const downloadService = require('./lib/downloadService.js');
+const scraperService = require('./lib/scraperService.js');
 const async = require('async');
 const fs = require('fs-extra');
 const request = require('request');
@@ -10,12 +10,12 @@ const request = require('request');
 function download(count, callback) {
 	async.waterfall([
 		function(callback) {
-			scraper(count, function(data) {
+			scraperService.scrape(count, function(data) {
 				callback(null, data);
 			})
 		},
 		function(data, callback) {
-			downloader(data, function(results) {
+			downloadService.downloadAndExtractPackages(data, function(results) {
 				callback(null, results);
 			})
 		}
