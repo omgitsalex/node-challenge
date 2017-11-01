@@ -3,8 +3,8 @@
 ## Notes
 
 1. All tests are passing, requested functionality from "project" section below is working
-2. I made an attempt at the bonus, but when more than 20+ packages are downloaded at a time, the program may intermittently fail. 
-3. Making heavy use of async series appeared to prevent the problem in #2, but came at such a significant tradeoff in speed that it didn't seem worth it.
+2. I made an attempt at the bonus and changing the COUNT env variable will cause the program to download a different number of packages. However, when more than 20+ packages are downloaded at a time, the program may intermittently fail. 
+3. Making heavy use of async series functions appeared to prevent the problem in #2, but came at such a significant tradeoff in speed that it didn't seem worth it to have as the implementation.
 
 
 ## Project
