@@ -10,20 +10,18 @@ const COUNT = parseInt(process.env.COUNT, 10) || 10;
 
 function download(count, callback) {
 	async.waterfall([
-		function(callback) {
-			scraperService.scrape(count, function(data) {
+		(callback) => {
+			scraperService.scrape(count, (data) => {
 				callback(null, data);
 			})
 		},
-		function(data, callback) {
-			downloadService.downloadAndExtractPackages(data, function(results) {
-				callback(null, results);
+		(data, callback) => {
+			downloadService.downloadAndExtractPackages(data, (results) => {
+				callback(null, results); // no-op
 			})
 		}
-	], function(err, results) {
-		fs.remove('./tmp', err => {
-			if (err) return console.error(err);
-		});
+	], (err, results) => {
+		fs.removeSync('./tmp');
 		return callback();
 	});
 }

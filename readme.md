@@ -1,6 +1,11 @@
-# Eaze Node.js Homework
+> Node.js challenge solution
 
-> Our Node.js code challenge for engineering applicants
+## Notes
+
+1. All tests are passing, requested functionality from "project" section below is working
+2. I made an attempt at the bonus, but when more than 20+ packages are downloaded at a time, the program may intermittently fail. 
+3. Making heavy use of async series appeared to prevent the problem in #2, but came at such a significant tradeoff in speed that it didn't seem worth it.
+
 
 ## Project
 
