@@ -6,7 +6,7 @@ const url = "https://www.npmjs.com/browse/depended";
 
 module.exports = scraper
 
-function scraper (count = 10, callback) {
+function scraper(count = 10, callback) {
 	let numberOfRequests = Math.ceil(count / 36);
 
 	request(url, function(error, response, body) {
@@ -15,12 +15,14 @@ function scraper (count = 10, callback) {
 			let packages = [];
 
 			$('a.name').filter(function() {
-				let obj = { name: "" }
+				let obj = { name: "" };
 				obj.name = $(this).text();
 				packages.push(obj);
 			});
 
 			return callback(packages.slice(0, count));
+		} else {
+			return callback(error);
 		} 
-	})
+	});
 }

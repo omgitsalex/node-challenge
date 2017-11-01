@@ -1,10 +1,11 @@
 'use strict'
 
 module.exports = download
-const scraper = require('./scraper.js');
 const downloader = require('./downloader.js');
+const scraper = require('./scraper.js');
 const async = require('async');
 const rimraf = require('rimraf');
+const request = require('request');
 
 function download(count, callback) {
 	async.waterfall([
@@ -15,13 +16,12 @@ function download(count, callback) {
 		},
 		function(data, callback) {
 			downloader(data, function(results) {
-				// cleans up temporary directory
-				rimraf('./tmp', function() {})
-
+				console.log("downloaded")
 				callback(null, results);
 			})
 		}
-	], function(err, results) {});
-
-	return callback();
+	], function(err, results) {
+		rimraf('./tmp', function() {})
+		return callback();
+	});
 }
