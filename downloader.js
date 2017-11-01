@@ -2,7 +2,7 @@
 
 module.exports = downloader;
 const { exec } = require('child_process');
-const fs = require('fs');
+const fs = require('fs-extra');
 const tarball = require('tarball-extract');
 const tarballDirectory = './tmp';
 const destinationDirectory = './packages';
@@ -27,6 +27,7 @@ function downloader(packageArray, callback) {
 					`${destinationDirectory}/${element.name}`, 
 					{}, 
 					function(err, result) {
+						fs.copy(`${destinationDirectory}/${element.name}/package`, `${destinationDirectory}/${element.name}`, console.error);
 						callback();
 					});
 			} else {

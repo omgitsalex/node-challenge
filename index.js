@@ -16,7 +16,6 @@ function download(count, callback) {
 		},
 		function(data, callback) {
 			downloader(data, function(results) {
-				console.log("downloaded")
 				callback(null, results);
 			})
 		}
