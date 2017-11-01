@@ -1,10 +1,9 @@
 {
   "scripts": {
-    "test": "node test.js | colortape"
+    "test": "node test.js"
   },
   "dependencies": {
     "async": "^2.5.0",
-    "colortape": "^0.1.2",
     "fs-extra": "^4.0.2",
     "tarball-extract": "0.0.6"
   },
