@@ -4,7 +4,7 @@ module.exports = download
 const downloader = require('./downloader.js');
 const scraper = require('./scraper.js');
 const async = require('async');
-const rimraf = require('rimraf');
+const fs = require('fs-extra');
 const request = require('request');
 
 function download(count, callback) {
@@ -20,7 +20,7 @@ function download(count, callback) {
 			})
 		}
 	], function(err, results) {
-		rimraf('./tmp', function() {})
+		fs.removeSync('./tmp');
 		return callback();
 	});
 }

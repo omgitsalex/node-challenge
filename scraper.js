@@ -9,8 +9,8 @@ module.exports = scraper
 function scraper(count = 10, callback) {
 	let numberOfRequests = Math.ceil(count / 36);
 
-	request(url, function(error, response, body) {
-		if (!error) {
+	request(url, function(err, response, body) {
+		if (!err) {
 			let $ = cheerio.load(body);
 			let packages = [];
 
@@ -22,7 +22,8 @@ function scraper(count = 10, callback) {
 
 			return callback(packages.slice(0, count));
 		} else {
-			return callback(error);
+			console.log(err);
+			process.exit(1);
 		} 
 	});
 }
