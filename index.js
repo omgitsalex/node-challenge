@@ -21,7 +21,9 @@ function download(count, callback) {
 			})
 		}
 	], function(err, results) {
-		fs.removeSync('./tmp');
+		fs.remove('./tmp', err => {
+			if (err) return console.error(err);
+		});
 		return callback();
 	});
 }
