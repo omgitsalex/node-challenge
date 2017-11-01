@@ -6,6 +6,7 @@ const scraperService = require('./lib/scraperService.js');
 const async = require('async');
 const fs = require('fs-extra');
 const request = require('request');
+const COUNT = parseInt(process.env.COUNT, 10) || 10;
 
 function download(count, callback) {
 	async.waterfall([
